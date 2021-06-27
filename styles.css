@@ -1,14 +1,24 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
-body{
-    font-family: "Poppins",sans-serif;
-    background-color: #ebf2ff;
+
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(-45deg, #68E0F9, #0F025E);
+    background-size: 200% 200%;
 }
-img{
+
+img {
     max-width: 100%;
     height: auto;
 }
 
+nav {
+
+    background-color: #ffffff;
+    
+}
