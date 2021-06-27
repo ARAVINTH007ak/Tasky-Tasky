@@ -12,7 +12,7 @@ const newCard = ({
 <div class="card">
     <div class="card-header text-end">
         <button onclick="edit('${id}')" type="button" class="btn btn-outline-success"><i class="fas fa-pencil-alt" ></i></button>
-        <button onclick="dele('${id}')" type="button" class="btn btn-outline-danger"><i class="fas fa-trash"></i></button>
+        <button onclick="dele('${id}')" type="button" class="btn btn-outline-danger" ><i class="fas fa-trash"></i></button>
     </div>
     <img src=${url}
         class="card-img-top" alt="...">
@@ -22,8 +22,8 @@ const newCard = ({
         <span contenteditable="false" class="badge bg-primary  ${id+"2"}">${type}</span>
     </div>
     <div class="card-footer text-muted text-end">
-        <button type="button" class="btn btn-outline-primary ${id+"3"}">Open Task</button>
-        <button style="display: none;" onclick="savebtn('${id}')" type="button" class="btn btn-primary ${id+"4"}">Save as</button>    
+        <button onclick="opent('${id}')" type="button" class="btn btn-outline-primary ${id+"3"}"  data-bs-toggle="modal" data-bs-target="#example">Open Task</button>
+        <button style="display: none;" onclick="savebtn('${id}')" type="button" class="btn btn-primary ${id+"4"}">Save the edit</button>    
     </div>
 </div>
 </div>`;
@@ -122,5 +122,19 @@ function savebtn(x) {
     t[index].type=f;
     localStorage.setItem("tasky",JSON.stringify(t))
     window.location.reload()
+
+}
+
+
+function opent(x) {
+    let a = localStorage.getItem("tasky")
+    let t=JSON.parse(a)
+    let faveGif = t.map(faveGif => faveGif.id);
+    let index = faveGif.findIndex(id => id == x);
+    console.log(index);
+    document.getElementsByClassName("c1")[0].setAttribute("src",t[index].url)
+    document.getElementsByClassName("c2")[0].innerHTML=t[index].title
+    document.getElementsByClassName("c3")[0].innerHTML=t[index].description
+    document.getElementsByClassName("c4")[0].innerHTML=t[index].type
 
 }
